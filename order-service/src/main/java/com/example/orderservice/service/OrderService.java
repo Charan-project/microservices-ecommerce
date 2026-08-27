@@ -37,14 +37,7 @@ public class OrderService {
 
         UserResponse user =
                 userClient.getUserById(order.getUserId());
-
-//        if (user == null) {
-//            return new OrderResponse(
-//                    order.getOrderId(),
-//                    order.getUserId(),
-//                    null
-//            );
-//        }
+        
 
         return new OrderResponse(
                 order.getOrderId(),

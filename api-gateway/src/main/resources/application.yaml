@@ -1,6 +1,6 @@
 spring:
   application:
-    name: api-gateway
+    name: API-GATEWAY
 
   cloud:
     gateway:
@@ -9,14 +9,24 @@ spring:
           routes:
 
             - id: user-service
-              uri: http://localhost:8081
+              uri: lb://USER-SERVICE
               predicates:
                 - Path=/api/users/**
 
             - id: order-service
-              uri: http://localhost:8082
+              uri: lb://ORDER-SERVICE
               predicates:
                 - Path=/api/orders/**
 
+            - id: payment-service
+              uri: lb://PAYMENT-SERVICE
+              predicates:
+                - Path=/api/payments/**
+
 server:
   port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
